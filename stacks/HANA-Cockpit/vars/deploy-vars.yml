@@ -1,0 +1,53 @@
+# Copyright 2021 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Terraform common vars for hana and netweaver (optional)
+sap_zone: asia-east1-a
+
+# Terraform common vars for hana and netweaver (required)
+sap_project_id: sap-deployments-nonprod
+sap_source_image_family: sles-15-sp3-sap
+sap_source_image_project: suse-sap-cloud
+sap_subnetwork_project_id: sap-deployments-nonprod
+sap_hana_subnetwork: subnet-primary-hana
+sap_tf_state_bucket: sap_tf_bucket
+sap_tf_state_bucket_prefix: sap_tf_cockpit
+
+# Terraform hana variables (required)
+sap_hana_instance_name: atchanacockpit
+sap_hana_service_account_name: sap-common-sa
+
+# Bucket containing installation files for HANA Cockpit
+sap_hana_install_files_bucket: sap_hana_install_files_bucket
+
+# Terraform hana variables (optional)
+sap_hana_instance_type: n2-highmem-32
+sap_hana_autodelete_boot_disk: "true"
+sap_hana_boot_disk_size: 30
+sap_hana_boot_disk_type: pd-ssd
+sap_hana_additional_disk_type: pd-ssd
+sap_hana_network_tags: ["sap-allow-all", "ssh"]
+sap_hana_pd_kms_key: null
+sap_hana_create_backup_volume: true
+sap_hana_backint_install: false
+sap_hana_fast_restart: false
+
+# SIDs for HANA Cockpit DB
+sap_hana_sid: S4C
+
+# Instance numbers for HANA Cockpit DB
+sap_hana_instance_number: '00'
+
+# Ansible hana variables (required)
+sap_hana_password: Google123
