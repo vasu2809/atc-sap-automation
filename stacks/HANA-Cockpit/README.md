@@ -1,6 +1,6 @@
-# SAP HANA installation and configuration using Terraform and Ansible
+# SAP HANA Cockpit installation and configuration using Terraform and Ansible
 
-Terraform module and ansible roles to deploy the SAP HANA Scaleup stack. This stack deploys a single node HANA instance with an option to create multiple nodes at the same time. All instances are deployed in the same zone. HANA Scaleup config is performed by a higher ansible role `ansible/roles/sap-hana-scaleup` that in turn calls lower ansible roles to do a specific task as part of the scaleup config.
+Terraform module and ansible roles to deploy the SAP HANA Cockpit stack. This stack deploys a standalone HANA Cockpit instance in a seperate VM. HANA Cockpit config is performed by a higher ansible role `ansible/roles/sap-hana-cockpit` that in turn calls lower ansible roles to do a specific task.
 
 # Deployment Architecture
 
@@ -13,15 +13,15 @@ Terraform module and ansible roles to deploy the SAP HANA Scaleup stack. This st
 
 # Usage
 
-1. Terraform code for deploying the infrastructure required for installing and configuring SAP HANA scaleup nodes is stored under `tf/`.
+1. Terraform code for deploying the infrastructure required for installing and configuring SAP HANA Cockpit is stored under `tf/`.
 
-2. Ansible roles for configuring HANA scaleup on the GCE instances is stored in the repository under `ansible/roles`.
+2. Ansible roles for configuring HANA Cockpit on the GCE instances is stored in the repository under `ansible/roles`.
 
-3. Ansible playbook to deploy the HANA scale-up stack is `playbook.yml`.
+3. Ansible playbook to deploy the HANA cockpit is `playbook.yml`.
 
 # Variables
 
-* All the ansible SAP HANA scaleup configuration default values are defined in the higher level ansible role under `ansible/roles/sap-hana-scaleup/defaults/main.yml`.
+* All the ansible SAP HANA scaleup configuration default values are defined in the higher level ansible role under `ansible/roles/sap-hana-cockpit/defaults/main.yml`.
 
 * All the variables required for deploying stack are defined in the `vars/deploy-vars.yml` file.
 
@@ -132,13 +132,13 @@ Below is the example playbook to deploy the HANA cockpit stack. Replace the vari
   - role: sap-hana-cockpit
 ```
 
-# Deploy HANA scaleup stack
+# Deploy standalone HANA cockpit 
 
 * Use the `ansible-wrapper` script at the root of the repository to deploy the stack. The ansible wrapper script will setup the environment along with installing the correct ansible version and dependencies required for running the code.
 
 `./ansible-wrapper ./stacks/HANA-Cockpit/playbook.yml --extra-vars '@./stacks/HANA-Cockpit/vars/deploy-vars.yml'`
 
-# Destroy HANA scaleup stack
+# Destroy standalone HANA Cockpit
 
 * Use the `ansible-wrapper` script at the root of the repository to destroy the stack.
 
@@ -146,4 +146,4 @@ Below is the example playbook to deploy the HANA cockpit stack. Replace the vari
 
 # Author Information
 
-Bala Guduru <balabharat.guduru@googlecloud.corp-partner.google.com>
+Vasudevan E.R vasudevaner@google.com
